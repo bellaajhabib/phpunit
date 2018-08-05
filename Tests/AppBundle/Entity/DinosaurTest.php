@@ -23,7 +23,30 @@ class DinosaurTest extends TestCase
     {
        $dinosaur= new Dinosaur();
         $dinosaur->setLength(15);
-        $this->assertGreaterThan(16,$dinosaur->getLength(),'Did you put it in the washing machine ?');
+        $this->assertGreaterThan(10,$dinosaur->getLength(),'Did you put it in the washing machine ?');
     }
 
+    public function testReturnsFullSpecificationOfDinosaur()
+    {
+        $dinosaur= new Dinosaur();
+        $this->assertSame(
+            'The Unknown non-carnivorous dinosaur is 0 meters long',
+            $dinosaur->getSpecification()
+        );
+    }
+
+    public function testReturnsFullSpecificationForTyrannosaurs()
+    {
+        $dinosaur= new Dinosaur('Tyrannosaurus',true);
+        $dinosaur->setLength(12);
+        $this->assertSame(
+            'The Tyrannosaurus carnivorous dinosaur is 12 meters long',
+            $dinosaur->getSpecification()
+        );
+    }
+
+    public function isCarnivorous(): bool
+    {
+        return $this->isCarnivorous;
+    }
 } 
