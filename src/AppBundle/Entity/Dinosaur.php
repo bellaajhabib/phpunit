@@ -27,7 +27,10 @@ class Dinosaur
      * @ORM\Column(type="boolean")
      */
     private $isCarnivorous;
-
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enclosure",indexBy="Dinosaur")
+     */
+    private $enclosure;
     const LARGE = 10;
     
     const HUGE=40;
